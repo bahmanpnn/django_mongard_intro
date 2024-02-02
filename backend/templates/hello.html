@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello</title>
+</head>
+<body>
+    {% comment %} thi is comment {% endcomment %}
+    {# this is comment too!! #}
+
+    {% comment %} check next time to check subdics like user.is_authenticated to know how it works!! {% endcomment %}
+    {% if name != 'admin'  %}
+        <h3>hello {{name}} {{last_name}}</h3>
+
+        {% else %}
+        <h3>sorry {{name| capfirst }} i did not know you are!! ://</h3>
+    {% endif %}
+</body>
+</html>

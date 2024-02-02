@@ -11,3 +11,11 @@ def home(request):
 
 def hello(request):
     return HttpResponse('hello user :)))')
+
+
+def hello_user(request):
+    person={'name':'bahman','last_name':'pournazari'}
+
+    # return render(request,'hello.html',{'name':'bahman','last_name':'pournazari'})
+    # return render(request,'hello.html',person)
+    return render(request,'hello.html',context=person)
