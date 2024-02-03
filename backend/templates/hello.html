@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hello</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}hello{% endblock title %}
+
+{% block content %}
     {% comment %} thi is comment {% endcomment %}
     {# this is comment too!! #}
 
@@ -16,5 +13,5 @@
         {% else %}
         <h3>sorry {{name| capfirst }} i did not know you are!! ://</h3>
     {% endif %}
-</body>
-</html>
+    
+{% endblock content %}
