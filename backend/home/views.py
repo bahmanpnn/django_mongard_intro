@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse
 from .models import Todo
+from .forms import TodoCreateForm
+from django.contrib import messages
 
 
 
@@ -32,8 +34,24 @@ def todos_detail(request,todo_id):
     return render(request,"todo_detail.html",{'todo':todo})
 
 def todos_delete(request,todo_id):
-    todo=Todo.objects.get(id=todo_id)
-    todo.delete()
+    todo=Todo.objects.get(id=todo_id).delete()
+    messages.add_message(request,messages.WARNING ,'todo deleted succussfully !!')
+    # messages.error(request,'todo deleted succussfully!!')
+
     return redirect('todo-page')
     
-    
+def todos_create(request):
+    if request.method == "POST":
+        todo_form=TodoCreateForm(request.POST)
+        if todo_form.is_valid():
+            cd=todo_form.cleaned_data
+            Todo.objects.create(title=cd['title'],body=cd['body'],created_date=cd['created_date'])
+            # messages.info/error/warning/debug(request,'Todo created successfully','success')
+            messages.add_message(request,messages.SUCCESS ,"Todo created successfully")
+            # messages.success(request,'Todo created successfully','success')
+            
+            return redirect('todo-page')
+    else:
+        todo_form=TodoCreateForm()
+
+    return render(request,'todo_create.html',{'todo_form':todo_form})

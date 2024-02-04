@@ -3,6 +3,9 @@
 {% block title %}todo{% endblock title %}
 
 {% block content %}
+    <a class="btn btn-info" href="{% url "todo-create" %}">todo create</a>
+    <br>
+    <br>
     <div class="card">
     {% if todos %}
         {% for todo in todos %}
