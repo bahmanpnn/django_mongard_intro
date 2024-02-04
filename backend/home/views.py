@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 from .models import Todo
 
 
@@ -25,3 +25,8 @@ def todos(request):
     all_todos=Todo.objects.all()
 
     return render(request,'todo.html',{"todos":all_todos})
+
+def todos_detail(request,todo_id):
+    todo=Todo.objects.get(id=todo_id)
+    
+    return render(request,"todo_detail.html",{'todo':todo})

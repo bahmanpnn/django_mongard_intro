@@ -4,8 +4,7 @@
 
 {% block content %}
     {% for todo in todos %}
-        <h3>{{todo.title}}</h3>
-        <p>{{todo.body}}</p>
-        <h6>{{todo.created_date}}</h6>
+        {% comment %} <h3><a href="{% url "todo-detail-page" todo.id %}">{{todo.title}}</a></h3> {% endcomment %}
+        <h3><a href="{% url "todo-detail-page" todo_id=todo.id %}">{{todo.title}}</a></h3>
     {% endfor %}
 {% endblock content %}

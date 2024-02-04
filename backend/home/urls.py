@@ -7,5 +7,6 @@ urlpatterns = [
     path('hello/',views.hello,name='hello'),
     path('hello_user/',views.hello_user,name='hello-user'),
     path('todos/',views.todos,name='todo-page'),
+    path('todos/detail/<int:todo_id>',views.todos_detail,name='todo-detail-page'),
 
 ]
