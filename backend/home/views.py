@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Todo
-from .forms import TodoCreateForm
+from .forms import TodoCreateForm,TodoUpdateForm
 from django.contrib import messages
 
 
@@ -55,3 +55,18 @@ def todos_create(request):
         todo_form=TodoCreateForm()
 
     return render(request,'todo_create.html',{'todo_form':todo_form})
+
+def todos_update(request,todo_id):
+    todo_details=Todo.objects.get(id=todo_id)
+    if request.method =="POST":
+
+        todo=TodoUpdateForm(request.POST,instance=todo_details)
+        if todo.is_valid():
+            todo.save()
+            messages.success(request,'todo updated succussfully','success')
+            return redirect('todo-detail-page',todo_id)
+
+    else:
+        todo=TodoUpdateForm(instance=todo_details)
+    
+    return render(request,'todo_update.html',{'todo_form':todo})

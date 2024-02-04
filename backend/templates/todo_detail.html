@@ -7,6 +7,7 @@
 {% block content %}
 
     <a class="btn btn-danger" href="{% url "todo-delete" todo_id=todo.id %}">delete</a>
+    <a class="btn btn-info" href="{% url "todo-update" todo_id=todo.id %}">update</a>
     <br>
     <br>
     <h3>{{todo.title}}</h3>
