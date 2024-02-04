@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse,Http404
+from django.shortcuts import render,redirect
+from django.http import HttpResponse,HttpResponseRedirect
 from .models import Todo
 
 
@@ -30,3 +30,10 @@ def todos_detail(request,todo_id):
     todo=Todo.objects.get(id=todo_id)
     
     return render(request,"todo_detail.html",{'todo':todo})
+
+def todos_delete(request,todo_id):
+    todo=Todo.objects.get(id=todo_id)
+    todo.delete()
+    return redirect('todo-page')
+    
+    

@@ -3,8 +3,14 @@
 {% block title %}todo{% endblock title %}
 
 {% block content %}
-    {% for todo in todos %}
+    <div class="card">
+    {% if todos %}
+        {% for todo in todos %}
         {% comment %} <h3><a href="{% url "todo-detail-page" todo.id %}">{{todo.title}}</a></h3> {% endcomment %}
-        <h3><a href="{% url "todo-detail-page" todo_id=todo.id %}">{{todo.title}}</a></h3>
-    {% endfor %}
+        <h3><a class="card-body" href="{% url "todo-detail-page" todo_id=todo.id %}">{{todo.title}}</a></h3>
+        {% endfor %}
+    {% else %}
+        <h3>sorry, there is no todo to show!!</h3>
+    {% endif %}
+    </div>
 {% endblock content %}

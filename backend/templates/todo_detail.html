@@ -5,8 +5,13 @@
 {% endblock title %}
 
 {% block content %}
-    <h3>{{todo.title}}</h3>
-    <p>{{todo.body}}</p>
-    <h6>{{todo.created_date}}</h6>
-{% endblock content %}
 
+    <a class="btn btn-danger" href="{% url "todo-delete" todo_id=todo.id %}">delete</a>
+    <br>
+    <br>
+    <h3>{{todo.title}}</h3>
+    <h6>{{todo.created_date}}</h6>
+    <hr>
+    <p>{{todo.body}}</p>
+{% endblock content %}
+  
