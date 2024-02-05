@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}register{% endblock title %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{register_form.as_p}}
+
+        {% comment %} {{register_form.username}}
+        {{register_form.email}}
+        {{register_form.password}} {% endcomment %}
+        
+        <input type='submit' value="register">
+    </form>
+    
+{% endblock content %}
