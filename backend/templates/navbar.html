@@ -9,17 +9,26 @@
          <a class="nav-link active" aria-current="page" href="{% url "home-page" %}">Home</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link" href="{% url "hello-user" %}">hello</a>
-       </li>
-       <li class="nav-item">
          <a class="nav-link" href="{% url "todo-page" %}">todos</a>
        </li>
        <li class="nav-item">
          <a class="nav-link" href="/admin">admin</a>
        </li>
-       <li class="nav-item">
-         <a class="nav-link" href="{% url "register-page" %}">register</a>
-       </li>
+       {% if user.is_authenticated %}
+          <li class="nav-item">
+              <a class="nav-link" href="{% url "logout" %}">logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "hello-user" %}">hello {{user.username}}</a>
+          </li>
+      {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "login-page" %}">login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "register-page" %}">sign up</a>
+          </li>
+       {% endif %}
      </ul>
 
      {% comment %} <form class="d-flex" role="search">
